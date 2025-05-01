@@ -5,8 +5,9 @@ module.exports = function (config) {
       frameworks: ['jasmine', '@angular-devkit/build-angular'],
       plugins: [
         require('karma-jasmine'),
-        require('karma-safari-launcher'),
+        //require('karma-safari-launcher'),
         require('karma-jasmine-html-reporter'),
+        require('karma-chrome-launcher'),
         require('@angular-devkit/build-angular/plugins/karma')
       ],
       client: { clearContext: false },
@@ -16,7 +17,8 @@ module.exports = function (config) {
       colors: true,
       logLevel: config.LOG_INFO,
       autoWatch: true,
-      browsers: ['Safari'],     
+      browsers: ['Chrome'],     
+      //browsers: ['Safari'],
       singleRun: false,
       restartOnFileChange: true,
     });
