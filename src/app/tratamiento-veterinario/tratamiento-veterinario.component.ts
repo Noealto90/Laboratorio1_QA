@@ -63,4 +63,15 @@ export class TratamientoVeterinarioComponent {
   setCostoDiario(costo: number): void {
     this.costoDiario = costo;
   }
+  
+  /**
+   * Calcula la fecha de finalización del tratamiento
+   * @returns FechaInicio + duracionDias
+   */
+  fechaFin(): Date {
+    const fin = new Date(this.fechaInicio);
+    fin.setDate(fin.getDate() + this.duracionDias);
+    return fin;
+  }
+
 }
