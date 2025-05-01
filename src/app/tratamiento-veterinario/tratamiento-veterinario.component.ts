@@ -62,16 +62,6 @@ export class TratamientoVeterinarioComponent {
   }
   
   /**
-   * Calcula la fecha de finalización del tratamiento.
-   * @returns FechaInicio + duracionDias
-   */
-  fechaFin(): Date {
-    const fin = new Date(this.fechaInicio);
-    fin.setDate(fin.getDate() + this.duracionDias);
-    return fin;
-  }
-
-  /**
    * Calcula el costo total del tratamiento.
    * @returns duracionDias * costoDiario
    */
