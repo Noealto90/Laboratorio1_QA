@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./tipo.component.css']
 })
 export class TipoComponent {
-  id: number = 0;
-  nombre: string = '';
-  fechaCreacion: Date = new Date();
+  private id: number = 0;
+  private nombre: string = '';
+  private fechaCreacion: Date = new Date();
 
   constructor() {}
 

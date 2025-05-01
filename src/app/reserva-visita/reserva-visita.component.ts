@@ -6,30 +6,47 @@ import { Component } from '@angular/core';
   styleUrls: ['./reserva-visita.component.css']
 })
 export class ReservaVisitaComponent {
-  codigo: string = '';
-  fecha: Date = new Date();
-  numeroVisitantes: number = 0;
-  tipoRecorrido: 'guiado' | 'libre' = 'libre';
+  private codigo: string = '';
+  private fecha: Date = new Date();
+  private numeroVisitantes: number = 0;
+  private tipoRecorrido: string = 'libre';
 
   constructor() {}
+
+  getCodigo(): string {
+    return this.codigo;
+  }
+
+  setCodigo(codigo: string): void {
+    this.codigo = codigo;
+  }
+
+  getFecha(): Date {
+    return this.fecha;
+  }
+
+  setFecha(fecha: Date): void {
+    this.fecha = fecha;
+  }
+
+  getNumeroVisitantes(): number {
+    return this.numeroVisitantes;
+  }
+
+  setNumeroVisitantes(numero: number): void {
+    this.numeroVisitantes = numero;
+  }
+
+  getTipoRecorrido(): string {
+    return this.tipoRecorrido;
+  }
+
+  setTipoRecorrido(tipo: string): void {
+    this.tipoRecorrido = tipo;
+  }
 
   esAltaDemanda(): boolean {
     const dia = this.fecha.getDay();
     return dia === 0 || dia === 6; // domingo o sábado
-  }
-
-  getPrecioTotal(): number {
-    const base = this.tipoRecorrido === 'guiado' ? 10 : 5;
-    let precio = base * this.numeroVisitantes;
-
-    if (this.numeroVisitantes > 10) {
-      precio *= 0.9; // descuento
-    }
-
-    if (this.esAltaDemanda()) {
-      precio *= 1.2; // recargo
-    }
-
-    return precio;
   }
 }

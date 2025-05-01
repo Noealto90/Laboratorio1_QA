@@ -7,26 +7,60 @@ import { AnimalComponent } from '../animal/animal.component';
   styleUrls: ['./tratamiento-veterinario.component.css']
 })
 export class TratamientoVeterinarioComponent {
-  codigo: string = '';
-  animal: AnimalComponent = new AnimalComponent();
-  descripcion: string = '';
-  fechaInicio: Date = new Date();
-  duracionDias: number = 0;
-  costoDiario: number = 0;
+  private codigo: string = '';
+  private animal: AnimalComponent = new AnimalComponent();
+  private descripcion: string = '';
+  private fechaInicio: Date = new Date();
+  private duracionDias: number = 0;
+  private costoDiario: number = 0;
 
   constructor() {}
 
-  getFechaFin(): Date {
-    const fin = new Date(this.fechaInicio);
-    fin.setDate(fin.getDate() + this.duracionDias);
-    return fin;
+  getCodigo(): string {
+    return this.codigo;
   }
 
-  getCostoTotal(): number {
-    let costo = this.duracionDias * this.costoDiario;
-    if (this.animal.necesitaAtencion()) {
-      costo *= 1.25;
-    }
-    return costo;
+  setCodigo(codigo: string): void {
+    this.codigo = codigo;
+  }
+
+  getAnimal(): AnimalComponent {
+    return this.animal;
+  }
+
+  setAnimal(animal: AnimalComponent): void {
+    this.animal = animal;
+  }
+
+  getDescripcion(): string {
+    return this.descripcion;
+  }
+
+  setDescripcion(desc: string): void {
+    this.descripcion = desc;
+  }
+
+  getFechaInicio(): Date {
+    return this.fechaInicio;
+  }
+
+  setFechaInicio(fecha: Date): void {
+    this.fechaInicio = fecha;
+  }
+
+  getDuracionDias(): number {
+    return this.duracionDias;
+  }
+
+  setDuracionDias(dias: number): void {
+    this.duracionDias = dias;
+  }
+
+  getCostoDiario(): number {
+    return this.costoDiario;
+  }
+
+  setCostoDiario(costo: number): void {
+    this.costoDiario = costo;
   }
 }

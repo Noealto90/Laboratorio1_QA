@@ -9,45 +9,51 @@ import { TratamientoVeterinarioComponent } from '../tratamiento-veterinario/trat
   styleUrls: ['./reporte-mensual.component.css']
 })
 export class ReporteMensualComponent {
-  mes: number = new Date().getMonth(); // 0 a 11
-  anio: number = new Date().getFullYear();
-  animales: AnimalComponent[] = [];
-  reservas: ReservaVisitaComponent[] = [];
-  tratamientos: TratamientoVeterinarioComponent[] = [];
+  private mes: number = new Date().getMonth();
+  private anio: number = new Date().getFullYear();
+  private animales: AnimalComponent[] = [];
+  private reservas: ReservaVisitaComponent[] = [];
+  private tratamientos: TratamientoVeterinarioComponent[] = [];
 
   constructor() {}
 
-  contarAnimalesNuevos(): number {
-    return this.animales.filter(a =>
-      a.fechaIngreso.getMonth() === this.mes &&
-      a.fechaIngreso.getFullYear() === this.anio
-    ).length;
+  getMes(): number {
+    return this.mes;
   }
 
-  totalVisitantes(): number {
-    return this.reservas
-      .filter(r =>
-        r.fecha.getMonth() === this.mes &&
-        r.fecha.getFullYear() === this.anio
-      )
-      .reduce((acc, r) => acc + r.numeroVisitantes, 0);
+  setMes(mes: number): void {
+    this.mes = mes;
   }
 
-  animalesTratados(): AnimalComponent[] {
-    const tratados = this.tratamientos
-      .filter(t =>
-        t.getFechaFin().getMonth() === this.mes &&
-        t.getFechaFin().getFullYear() === this.anio
-      )
-      .map(t => t.animal);
-
-    return Array.from(new Set(tratados));
+  getAnio(): number {
+    return this.anio;
   }
 
-  resumen(): string {
-    return `Mes: ${this.mes + 1}/${this.anio}
-Animales nuevos: ${this.contarAnimalesNuevos()}
-Total visitantes: ${this.totalVisitantes()}
-Animales tratados: ${this.animalesTratados().length}`;
+  setAnio(anio: number): void {
+    this.anio = anio;
+  }
+
+  getAnimales(): AnimalComponent[] {
+    return this.animales;
+  }
+
+  setAnimales(animales: AnimalComponent[]): void {
+    this.animales = animales;
+  }
+
+  getReservas(): ReservaVisitaComponent[] {
+    return this.reservas;
+  }
+
+  setReservas(reservas: ReservaVisitaComponent[]): void {
+    this.reservas = reservas;
+  }
+
+  getTratamientos(): TratamientoVeterinarioComponent[] {
+    return this.tratamientos;
+  }
+
+  setTratamientos(tratamientos: TratamientoVeterinarioComponent[]): void {
+    this.tratamientos = tratamientos;
   }
 }
